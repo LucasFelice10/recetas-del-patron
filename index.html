@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recetas Del Patron | Lautaro Carnelli</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="cursor-ring"></div>
+  <div id="cursor-dot"></div>
+
+  <header class="topbar glass" id="navbar">
+    <div class="brand">
+      <span class="mark"></span>
+      <div>
+        <p class="eyebrow">Marca oficial</p>
+        <strong>Recetas Del Patron</strong>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="#recetas">Recetas</a>
+      <a href="#about">Sobre mí</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="socials">
+      <a href="https://www.instagram.com/recetasdelpatron" aria-label="Instagram" target="_blank" rel="noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm8 2.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@recetasdelpatron" aria-label="TikTok" target="_blank" rel="noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 3.5h2.5v3.1a4.9 4.9 0 0 1-4.9-4.9v2.5a2.4 2.4 0 0 0 2.4 2.4zM18.5 8.6a7.6 7.6 0 0 1-7.6-7.6h2.5a5.1 5.1 0 0 0 5.1 5.1v2.5zM21 10v4.5a5.5 5.5 0 0 1-5.5 5.5 5.4 5.4 0 0 1-2.9-.9v-4.8a3 3 0 0 0 1.5.4 3 3 0 0 0 3-3V4.5h2.5V10z"/></svg>
+      </a>
+    </div>
+    <button class="burger" type="button" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-overlay"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow glow">Recetas fáciles, humor y pura energía</p>
+        <h1>Bienvenido a Recetas Del Patron</h1>
+        <p class="hero-copy">Descubrí recetas fáciles, creativas y con el tono divertido de siempre, todo desde tu cocina.</p>
+        <div class="hero-actions">
+          <a href="#recetas" class="btn btn-primary">Ver Recetas</a>
+          <a href="#contacto" class="btn btn-secondary">Trabajemos juntos</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="section-grid">
+        <div class="profile-card reveal">
+          <div class="profile-ring"></div>
+          <img src="foto-perfil.jpg" alt="Lautaro Carnelli" />
+        </div>
+        <div class="about-copy reveal">
+          <p class="section-label">Sobre mí</p>
+          <h2>Soy Lautaro Carnelli.</h2>
+          <p>Soy Lautaro Carnelli. Mi misión es demostrarte que cocinar increíble es para cualquiera. En este espacio te comparto la forma más fácil y divertida de hacer las mejores recetas, con pocos ingredientes y el toque de humor de siempre para que la rompas en tu casa.</p>
+          <div class="stats-card">
+            <span class="stat-number">448K+</span>
+            <span class="stat-text">Seguidores en Instagram</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section recipes" id="recetas">
+      <div class="section-head reveal">
+        <p class="section-label">Feed de Reels</p>
+        <h2>Recetas Destacadas</h2>
+      </div>
+      <div class="recipe-grid">
+        <a class="recipe-link" href="https://www.instagram.com/reel/DYvFiB-OrIU/" target="_blank" rel="noopener noreferrer">
+          <article class="recipe-card reveal">
+            <video class="recipe-video" autoplay muted loop playsinline preload="metadata" src="reel1.mp4"></video>
+            <div class="card-overlay"></div>
+            <div class="card-info">
+              <span>Dulce de Batata Casero</span>
+              <small>Solo 4 ingredientes</small>
+            </div>
+          </article>
+        </a>
+
+        <a class="recipe-link" href="https://www.instagram.com/reel/DYiNe5wyqjx/" target="_blank" rel="noopener noreferrer">
+          <article class="recipe-card reveal">
+            <video class="recipe-video" autoplay muted loop playsinline preload="metadata" src="reel2.mp4"></video>
+            <div class="card-overlay"></div>
+            <div class="card-info">
+              <span>Flan Casero sin agujeritos</span>
+              <small>Cremoso y elegante</small>
+            </div>
+          </article>
+        </a>
+
+        <a class="recipe-link" href="https://www.instagram.com/reel/REEL_ID_400K/" target="_blank" rel="noopener noreferrer">
+          <article class="recipe-card reveal">
+            <video class="recipe-video" autoplay muted loop playsinline preload="metadata" src="reel3.mp4"></video>
+            <div class="card-overlay"></div>
+            <div class="card-info">
+              <span>Especial 400k - Cheesecake de Café</span>
+              <small>Textura sedosa</small>
+            </div>
+          </article>
+        </a>
+
+        <a class="recipe-link" href="https://www.instagram.com/reel/DYnXGzCxtf6/" target="_blank" rel="noopener noreferrer">
+          <article class="recipe-card reveal">
+            <video class="recipe-video" autoplay muted loop playsinline preload="metadata" src="reel4.mp4"></video>
+            <div class="card-overlay"></div>
+            <div class="card-info">
+              <span>Mousse de Chocolate en 5 min</span>
+              <small>Un clásico express</small>
+            </div>
+          </article>
+        </a>
+      </div>
+    </section>
+
+    <section class="partners" aria-label="Marcas colaboradoras">
+      <div class="partner-track">
+        <img src="logo1.png" alt="logo 1" />
+        <img src="logo2.png" alt="logo 2" />
+        <img src="logo3.png" alt="logo 3" />
+        <img src="logo4.png" alt="logo 4" />
+        <img src="logo5.png" alt="logo 5" />
+        <img src="logo6.png" alt="logo 6" />
+        <!-- duplicated for seamless loop -->
+        <img src="logo1.png" alt="logo 1" />
+        <img src="logo2.png" alt="logo 2" />
+        <img src="logo3.png" alt="logo 3" />
+        <img src="logo4.png" alt="logo 4" />
+        <img src="logo5.png" alt="logo 5" />
+        <img src="logo6.png" alt="logo 6" />
+      </div>
+    </section>
+
+    <section class="section collaboration" id="contacto">
+      <div class="contact-panel reveal">
+        <div class="contact-copy">
+          <p class="section-label">Colaboraciones</p>
+          <h2>Representado por @latinfluence.</h2>
+          <p>¿Querés que tu marca sea parte de mis recetas?</p>
+        </div>
+        <form id="contactForm" class="contact-form">
+          <div class="form-grid">
+            <label class="form-field">
+              <span>Nombre</span>
+              <input type="text" name="name" placeholder="Tu nombre" required />
+            </label>
+            <label class="form-field">
+              <span>Email</span>
+              <input type="email" name="email" placeholder="Tu email" required />
+            </label>
+            <label class="form-field full-width">
+              <span>Mensaje</span>
+              <textarea name="message" rows="5" placeholder="Contanos tu propuesta" required></textarea>
+            </label>
+          </div>
+          <div class="action-group">
+            <button type="button" id="mailBtn" class="btn btn-primary contact-action">Enviar por Mail</button>
+            <button type="button" id="whatsappBtn" class="btn btn-secondary contact-action whatsapp-action">Enviar por WhatsApp</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <strong>Recetas Del <span>Patron</span></strong>
+        <p>Recetas fáciles, humor y más</p>
+      </div>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/recetasdelpatron" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm8 2.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@recetasdelpatron" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="footer-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.5 3.5h2.5v3.1a4.9 4.9 0 0 1-4.9-4.9v2.5a2.4 2.4 0 0 0 2.4 2.4zM18.5 8.6a7.6 7.6 0 0 1-7.6-7.6h2.5a5.1 5.1 0 0 0 5.1 5.1v2.5zM21 10v4.5a5.5 5.5 0 0 1-5.5 5.5 5.4 5.4 0 0 1-2.9-.9v-4.8a3 3 0 0 0 1.5.4 3 3 0 0 0 3-3V4.5h2.5V10z"/></svg>
+        </a>
+        <a href="mailto:Recetasdelpatron@gmail.com" aria-label="Email" class="footer-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 2l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+        </a>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026 Lautaro Carnelli. Todos los derechos reservados.</p>
+        <p>Desarrollado por <a class="developer-link" href="https://lucasfeliceportfolio.vercel.app/" target="_blank" rel="noopener noreferrer">DVL Developer</a>.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/5491123456789" target="_blank" rel="noreferrer" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+    <span class="pulse"></span>
+    <span class="pulse delay"></span>
+    <div class="whatsapp-icon">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.149-.672.149-.198.297-.767.967-.94 1.165-.173.198-.347.223-.644.075-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.447-.52.149-.173.198-.297.298-.497.099-.198.05-.372-.025-.521-.075-.149-.672-1.612-.921-2.207-.242-.579-.487-.5-.672-.51l-.573-.01c-.198 0-.52.074-.793.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.1 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.718 2.006-1.41.248-.694.248-1.289.173-1.41-.074-.12-.272-.198-.57-.347zM12 2C6.477 2 2 6.478 2 12c0 1.991.58 3.84 1.578 5.378L2 22l4.768-1.559A9.951 9.951 0 0 0 12 22c5.523 0 10-4.478 10-10S17.523 2 12 2z"/></svg>
+    </div>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>

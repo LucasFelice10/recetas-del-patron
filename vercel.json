@@ -1,0 +1,6 @@
+{
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "devCommand": "npx http-server",
+  "framework": "html"
+}
