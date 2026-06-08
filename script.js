@@ -54,7 +54,7 @@ revealElements.forEach((element) => revealObserver.observe(element));
 const contactForm = document.getElementById('contactForm');
 const mailBtn = document.getElementById('mailBtn');
 const whatsappBtn = document.getElementById('whatsappBtn');
-const phoneNumber = '5491123456789';
+const phoneNumber = '5491135736153';
 
 const getFormValues = () => {
   const formData = new FormData(contactForm);
@@ -86,7 +86,7 @@ mailBtn.addEventListener('click', () => {
   disableActions(true);
   const subject = encodeURIComponent('Contacto desde Recetas Del Patron');
   const body = encodeURIComponent(`Hola, soy ${values.name}.\n\n${values.message}\n\nEmail: ${values.email}`);
-  window.location.href = `mailto:Recetasdelpatron@gmail.com?subject=${subject}&body=${body}`;
+  window.location.href = `mailto:recetasdelpatron@lfcreator.com?subject=${subject}&body=${body}`;
   setTimeout(() => disableActions(false), 500);
 });
 
