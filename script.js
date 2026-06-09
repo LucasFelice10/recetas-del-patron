@@ -118,6 +118,7 @@ burgerButton.addEventListener('click', () => {
   const expanded = burgerButton.getAttribute('aria-expanded') === 'true';
   burgerButton.setAttribute('aria-expanded', String(!expanded));
   topbar.classList.toggle('nav-open');
+  document.body.classList.toggle('no-scroll');
 });
 
 const closeMenuButton = document.querySelector('.close-menu');
@@ -126,6 +127,7 @@ const menuLinks = document.querySelectorAll('.nav-links a');
 const closeMenu = () => {
   burgerButton.setAttribute('aria-expanded', 'false');
   topbar.classList.remove('nav-open');
+  document.body.classList.remove('no-scroll');
 };
 
 if (closeMenuButton) {
