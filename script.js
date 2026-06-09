@@ -84,22 +84,23 @@ mailBtn.addEventListener('click', () => {
   }
 
   disableActions(true);
-  const subject = encodeURIComponent('Contacto desde Recetas Del Patron');
-  const body = encodeURIComponent(`Hola, soy ${values.name}.\n\n${values.message}\n\nEmail: ${values.email}`);
-  window.location.href = `mailto:recetasdelpatron@lfcreator.com?subject=${subject}&body=${body}`;
+  const textoMensaje = `Nombre: ${values.name}\nEmail: ${values.email}\nMensaje: ${values.message}`;
+  const message = encodeURIComponent(textoMensaje);
+  window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=recetasdelpatron@lfcreator.com&su=${encodeURIComponent("Contacto desde la Web")}&body=${message}`, "_blank");
   setTimeout(() => disableActions(false), 500);
 });
 
-whatsappBtn.addEventListener('click', () => {
+whatsappBtn.addEventListener("click", () => {
   const values = getFormValues();
   if (!validateForm(values)) {
-    alert('Por favor completa todos los campos con información válida.');
+    alert("Por favor completa todos los campos con información válida.");
     return;
   }
 
   disableActions(true);
-  const message = encodeURIComponent(`Hola, soy ${values.name}. Quiero contactarlos para una colaboración. Mi email es ${values.email}.\n\nMensaje:\n${values.message}`);
-  window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  const textoMensaje = `Nombre: ${values.name}\nEmail: ${values.email}\nMensaje: ${values.message}`;
+  const message = encodeURIComponent(textoMensaje);
+  window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
   setTimeout(() => disableActions(false), 600);
 });
 

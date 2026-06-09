@@ -1,55 +1,25 @@
-# Recetas Del Patron
+# Recetas Del Patron - Sitio Web Oficial
 
-Landing page premium y ultra-moderna para Lautaro Carnelli (@recetasdelpatron), creador de contenido gastronómico.
+Bienvenidos al repositorio oficial de la landing page de **Recetas Del Patron**, la marca digital del creador de contenido gastronómico Lautaro Carnelli. 
 
-## Características
+## Sobre el Proyecto
 
-- **Diseño Dark Premium**: Paleta naranja vibrante (#ff8c00) con fondo oscuro y efectos glassmorphism.
-- **100% Responsive**: Adaptado a todos los tamaños de pantalla desde 320px hasta 4K.
-- **Custom Cursor**: Cursor personalizado con efecto magnético y reacción a elementos interactivos.
-- **Scroll Reveals**: Animaciones fluidas al hacer scroll con Intersection Observer.
-- **Grid de Reels**: Tarjetas de video 9:16 con enlaces directos a Instagram.
-- **Carrusel de Logos**: Marcas colaboradoras con efecto gris/color en hover.
-- **Formulario Dual**: Contacto por email y WhatsApp.
-- **Footer Premium**: Tres columnas con redes sociales y créditos de desarrollo.
+Este sitio web fue diseñado con el objetivo de centralizar la presencia digital del creador, ofreciendo a su comunidad (más de 448K seguidores) y a potenciales marcas colaboradoras un espacio moderno, rápido y visualmente atractivo. 
 
-## Archivos
+A diferencia de un e-commerce tradicional, el enfoque de este sitio es netamente de entretenimiento y portafolio: Lautaro no vende comida, sino que enseña a cocinar de forma fácil y con mucho humor.
 
-- `index.html` - Estructura semántica HTML5
-- `style.css` - Estilos CSS3 puro con variables personalizadas
-- `script.js` - JavaScript vanilla ES6+ para interactividad
-- `vercel.json` - Configuración para Vercel
-- Recursos: imágenes, videos y logos locales
+## Secciones Principales
 
-## Instalación Local
+* **Inicio / Presentación:** Una bienvenida cálida que refleja la personalidad de la marca.
+* **Sobre Mí:** Breve biografía del creador y su misión en el mundo de la cocina digital.
+* **Recetas Destacadas:** Una galería interactiva donde se pueden visualizar directamente los Reels más exitosos de su cuenta de Instagram.
+* **Colaboraciones:** Un espacio dedicado a marcas y agencias (representado por @latinfluence) con acceso directo para propuestas comerciales.
+* **Contacto Directo:** Enlaces rápidos para comunicarse vía WhatsApp o Correo Electrónico.
 
-1. Clona el repositorio:
-   ```bash
-   git clone <tu-repo-url>
-   cd "Web Recetas del patron"
-   ```
+## Desarrollo y Diseño
 
-2. Abre `index.html` en tu navegador.
-
-## Despliegue en Vercel
-
-1. Sube el proyecto a GitHub.
-2. Ve a [vercel.com](https://vercel.com) y conecta tu repositorio.
-3. Vercel detectará automáticamente la configuración en `vercel.json`.
-4. Tu sitio estará en vivo en pocos segundos.
-
-## Personalización
-
-- Reemplaza `imagen-principal.png` con tu imagen de portada.
-- Actualiza `foto-perfil.jpg` con la foto de Lautaro.
-- Añade los videos reales en `reel1.mp4`, `reel2.mp4`, etc.
-- Personaliza los logos colaboradores (`logo1.png` a `logo6.png`).
-
-## Autor
-
-Desarrollado por **DVL Developer**  
-Portfolio: [lucasfeliceportfolio.vercel.app](https://lucasfeliceportfolio.vercel.app/)
+Este proyecto fue desarrollado a medida, priorizando una experiencia de usuario (UX) fluida, un diseño adaptable a todos los dispositivos (Mobile-First) y una estética "Dark Premium" con acentos cálidos que estimulan el apetito.
 
 ---
-
-© 2026 Lautaro Carnelli. Todos los derechos reservados.
+**Desarrollado por DVL Developer**
+Para más información sobre el desarrollo de este u otros proyectos, visita el [Portafolio Oficial](https://lucasfeliceportfolio.vercel.app/).
