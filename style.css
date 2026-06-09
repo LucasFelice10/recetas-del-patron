@@ -14,10 +14,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 html, body {
   margin: 0;
   padding: 0;
@@ -29,12 +25,6 @@ html, body {
   font-family: 'Inter', system-ui, sans-serif;
   overflow-x: hidden;
   cursor: none;
-  scroll-behavior: smooth;
-}
-
-body.no-scroll {
-  overflow: hidden;
-  touch-action: none;
 }
 
 button, a {
@@ -204,51 +194,6 @@ body::before {
 .burger span:nth-child(1) { top: 12px; }
 .burger span:nth-child(2) { top: 20px; }
 .burger span:nth-child(3) { top: 28px; }
-
-.burger.open span:nth-child(1) {
-  transform: translateX(-50%) rotate(45deg) translateY(8px);
-}
-
-.burger.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.burger.open span:nth-child(3) {
-  transform: translateX(-50%) rotate(-45deg) translateY(-8px);
-}
-
-.menu-close {
-  display: none;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  cursor: pointer;
-  z-index: 100;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.25s ease, border-color 0.25s ease;
-}
-
-.menu-close svg {
-  width: 24px;
-  height: 24px;
-  fill: var(--text);
-  transition: transform 0.3s ease;
-}
-
-.menu-close:hover {
-  background: rgba(255, 140, 0, 0.15);
-  border-color: rgba(255, 140, 0, 0.4);
-}
-
-.menu-close:hover svg {
-  transform: rotate(90deg);
-}
 
 .hero {
   min-height: 100vh;
@@ -471,7 +416,6 @@ body::before {
   transform: translateY(30px);
   opacity: 0;
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-  content-visibility: auto;
 }
 
 .recipe-card::before {
@@ -850,6 +794,10 @@ body::before {
   }
 }
 
+.topbar.nav-open .nav-links {
+  display: flex;
+}
+
 /* Partner carousel (logos numbered logo1.png ... logo6.png) */
 .partners {
   width: 100%;
@@ -865,7 +813,6 @@ body::before {
   width: max-content;
   animation: marquee 24s linear infinite;
   padding-left: 20px;
-  content-visibility: auto;
 }
 
 .partner-track img {
@@ -895,23 +842,37 @@ body::before {
   .nav-links {
     display: none;
     position: fixed;
-    right: 16px;
-    top: 82px;
-    width: min(260px, calc(100vw - 36px));
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 20px;
-    border-radius: 24px;
-    background: rgba(10, 10, 10, 0.94);
-    backdrop-filter: blur(18px);
-    border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border: none;
+    box-shadow: none;
   }
 
   .nav-links a {
-    padding: 12px 0;
-    font-size: 1rem;
+    padding: 16px 0;
+    font-size: 2rem;
+  }
+
+  .close-menu {
+    display: block;
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 2.5rem;
+    cursor: pointer;
   }
 }
 
@@ -935,29 +896,6 @@ body::before {
   0% { transform: scale(0.9); opacity: 0.9; }
   70% { transform: scale(1.85); opacity: 0; }
   100% { opacity: 0; }
-}
-
-@media (hover: none) and (pointer: coarse) {
-  .nav-links {
-    display: none;
-  }
-
-  .nav-links.visible {
-    display: flex;
-  }
-
-  #cursor-dot,
-  #cursor-ring {
-    display: none !important;
-  }
-
-  * {
-    cursor: auto !important;
-  }
-
-  html, body {
-    cursor: auto !important;
-  }
 }
 
 @media (max-width: 960px) {
