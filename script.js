@@ -8,20 +8,22 @@ let mouseY = 0;
 let ringX = 0;
 let ringY = 0;
 
-window.addEventListener('mousemove', (event) => {
-  mouseX = event.clientX;
-  mouseY = event.clientY;
-  cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-});
+if (window.matchMedia("(pointer: fine)").matches) {
+  window.addEventListener('mousemove', (event) => {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+    cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+  });
 
-const animateCursor = () => {
-  ringX += (mouseX - ringX) * 0.16;
-  ringY += (mouseY - ringY) * 0.16;
-  cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
-  requestAnimationFrame(animateCursor);
-};
+  const animateCursor = () => {
+    ringX += (mouseX - ringX) * 0.16;
+    ringY += (mouseY - ringY) * 0.16;
+    cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
+    requestAnimationFrame(animateCursor);
+  };
 
-animateCursor();
+  animateCursor();
+}
 
 const setHoverState = (enter) => {
   body.classList.toggle('interactive-hover', enter);
@@ -116,6 +118,22 @@ burgerButton.addEventListener('click', () => {
   const expanded = burgerButton.getAttribute('aria-expanded') === 'true';
   burgerButton.setAttribute('aria-expanded', String(!expanded));
   topbar.classList.toggle('nav-open');
+});
+
+const closeMenuButton = document.querySelector('.close-menu');
+const menuLinks = document.querySelectorAll('.nav-links a');
+
+const closeMenu = () => {
+  burgerButton.setAttribute('aria-expanded', 'false');
+  topbar.classList.remove('nav-open');
+};
+
+if (closeMenuButton) {
+  closeMenuButton.addEventListener('click', closeMenu);
+}
+
+menuLinks.forEach(link => {
+  link.addEventListener('click', closeMenu);
 });
 
 window.addEventListener('resize', () => {
