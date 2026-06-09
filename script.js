@@ -1,3 +1,6 @@
+window.history.scrollRestoration = 'manual';
+window.onload = function() { window.scrollTo(0,0); };
+
 const cursorDot = document.getElementById('cursor-dot');
 const cursorRing = document.getElementById('cursor-ring');
 const body = document.body;
@@ -23,18 +26,18 @@ if (window.matchMedia("(pointer: fine)").matches) {
   };
 
   animateCursor();
-}
 
-const setHoverState = (enter) => {
-  body.classList.toggle('interactive-hover', enter);
-};
+  const setHoverState = (enter) => {
+    body.classList.toggle('interactive-hover', enter);
+  };
 
-interactiveSelectors.forEach((selector) => {
-  document.querySelectorAll(selector).forEach((element) => {
-    element.addEventListener('mouseenter', () => setHoverState(true));
-    element.addEventListener('mouseleave', () => setHoverState(false));
+  interactiveSelectors.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((element) => {
+      element.addEventListener('mouseenter', () => setHoverState(true));
+      element.addEventListener('mouseleave', () => setHoverState(false));
+    });
   });
-});
+}
 
 const revealElements = document.querySelectorAll('.reveal');
 const observerOptions = {
@@ -133,7 +136,19 @@ if (closeMenuButton) {
 }
 
 menuLinks.forEach(link => {
-  link.addEventListener('click', closeMenu);
+  link.addEventListener('click', (e) => {
+    const targetId = link.getAttribute('href');
+    if (targetId && targetId.startsWith('#')) {
+      e.preventDefault();
+      closeMenu();
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      closeMenu();
+    }
+  });
 });
 
 window.addEventListener('resize', () => {
