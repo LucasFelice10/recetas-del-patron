@@ -1,19 +1,24 @@
-const cursorDot = document.getElementById('cursor-dot');
-const cursorRing = document.getElementById('cursor-ring');
-const body = document.body;
-const interactiveSelectors = ['a', 'button', '.recipe-card', '.recipe-video', '.btn', '.burger', '.whatsapp-float', '.contact-action'];
+// ============================================
+// 1. CURSOR PERSONALIZADO (Solo en Desktop)
+// ============================================
+const hasFineCursor = window.matchMedia("(pointer: fine)").matches;
 
-let mouseX = 0;
-let mouseY = 0;
-let ringX = 0;
-let ringY = 0;
+if (hasFineCursor) {
+  const cursorDot = document.getElementById('cursor-dot');
+  const cursorRing = document.getElementById('cursor-ring');
+  const body = document.body;
+  const interactiveSelectors = ['a', 'button', '.recipe-card', '.recipe-video', '.btn', '.burger', '.whatsapp-float', '.contact-action'];
 
-if (window.matchMedia("(pointer: fine)").matches) {
-  window.addEventListener('mousemove', (event) => {
-    mouseX = event.clientX;
-    mouseY = event.clientY;
-    cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-  });
+  let mouseX = 0;
+  let mouseY = 0;
+  let ringX = 0;
+  let ringY = 0;
+
+window.addEventListener('mousemove', (event) => {
+  mouseX = event.clientX;
+  mouseY = event.clientY;
+  cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+});
 
   const animateCursor = () => {
     ringX += (mouseX - ringX) * 0.16;
@@ -22,20 +27,23 @@ if (window.matchMedia("(pointer: fine)").matches) {
     requestAnimationFrame(animateCursor);
   };
 
-  animateCursor();
+animateCursor();
+
+  const setHoverState = (enter) => {
+    body.classList.toggle('interactive-hover', enter);
+  };
+
+  interactiveSelectors.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((element) => {
+      element.addEventListener('mouseenter', () => setHoverState(true));
+      element.addEventListener('mouseleave', () => setHoverState(false));
+    });
+  });
 }
 
-const setHoverState = (enter) => {
-  body.classList.toggle('interactive-hover', enter);
-};
-
-interactiveSelectors.forEach((selector) => {
-  document.querySelectorAll(selector).forEach((element) => {
-    element.addEventListener('mouseenter', () => setHoverState(true));
-    element.addEventListener('mouseleave', () => setHoverState(false));
-  });
-});
-
+// ============================================
+// 2. SCROLL REVEAL CON INTERSECTION OBSERVER
+// ============================================
 const revealElements = document.querySelectorAll('.reveal');
 const observerOptions = {
   threshold: 0.18,
@@ -53,6 +61,56 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealElements.forEach((element) => revealObserver.observe(element));
 
+// ============================================
+// 3. MENÚ MÓVIL FULL-SCREEN OVERLAY
+// ============================================
+const burgerButton = document.querySelector('.burger');
+const menuCloseBtn = document.querySelector('.menu-close');
+const navLinks = document.querySelector('.nav-links');
+const navAnchors = navLinks.querySelectorAll('a');
+
+function openMenu() {
+  navLinks.classList.add('visible');
+  burgerButton.classList.add('open');
+  menuCloseBtn.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  navLinks.classList.remove('visible');
+  burgerButton.classList.remove('open');
+  menuCloseBtn.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+burgerButton.addEventListener('click', () => {
+  if (navLinks.classList.contains('visible')) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+});
+
+menuCloseBtn.addEventListener('click', closeMenu);
+
+// Cierra el menú al hacer clic en un enlace con scroll suave automático
+navAnchors.forEach((anchor) => {
+  anchor.addEventListener('click', () => {
+    closeMenu();
+  });
+});
+
+// Cierra el menú si se redimensiona la ventana a desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 820) {
+    closeMenu();
+    navLinks.style.display = '';
+  }
+});
+
+// ============================================
+// 4. FORMULARIO DE CONTACTO
+// ============================================
 const contactForm = document.getElementById('contactForm');
 const mailBtn = document.getElementById('mailBtn');
 const whatsappBtn = document.getElementById('whatsappBtn');
@@ -118,24 +176,6 @@ burgerButton.addEventListener('click', () => {
   const expanded = burgerButton.getAttribute('aria-expanded') === 'true';
   burgerButton.setAttribute('aria-expanded', String(!expanded));
   topbar.classList.toggle('nav-open');
-  document.body.classList.toggle('no-scroll');
-});
-
-const closeMenuButton = document.querySelector('.close-menu');
-const menuLinks = document.querySelectorAll('.nav-links a');
-
-const closeMenu = () => {
-  burgerButton.setAttribute('aria-expanded', 'false');
-  topbar.classList.remove('nav-open');
-  document.body.classList.remove('no-scroll');
-};
-
-if (closeMenuButton) {
-  closeMenuButton.addEventListener('click', closeMenu);
-}
-
-menuLinks.forEach(link => {
-  link.addEventListener('click', closeMenu);
 });
 
 window.addEventListener('resize', () => {
