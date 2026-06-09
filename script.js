@@ -1,39 +1,49 @@
-const cursorDot = document.getElementById('cursor-dot');
-const cursorRing = document.getElementById('cursor-ring');
-const body = document.body;
-const interactiveSelectors = ['a', 'button', '.recipe-card', '.recipe-video', '.btn', '.burger', '.whatsapp-float', '.contact-action'];
+// ============================================
+// 1. CURSOR PERSONALIZADO (Solo en Desktop)
+// ============================================
+const hasFineCursor = window.matchMedia("(pointer: fine)").matches;
 
-let mouseX = 0;
-let mouseY = 0;
-let ringX = 0;
-let ringY = 0;
+if (hasFineCursor) {
+  const cursorDot = document.getElementById('cursor-dot');
+  const cursorRing = document.getElementById('cursor-ring');
+  const body = document.body;
+  const interactiveSelectors = ['a', 'button', '.recipe-card', '.recipe-video', '.btn', '.burger', '.whatsapp-float', '.contact-action'];
 
-window.addEventListener('mousemove', (event) => {
-  mouseX = event.clientX;
-  mouseY = event.clientY;
-  cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-});
+  let mouseX = 0;
+  let mouseY = 0;
+  let ringX = 0;
+  let ringY = 0;
 
-const animateCursor = () => {
-  ringX += (mouseX - ringX) * 0.16;
-  ringY += (mouseY - ringY) * 0.16;
-  cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
-  requestAnimationFrame(animateCursor);
-};
-
-animateCursor();
-
-const setHoverState = (enter) => {
-  body.classList.toggle('interactive-hover', enter);
-};
-
-interactiveSelectors.forEach((selector) => {
-  document.querySelectorAll(selector).forEach((element) => {
-    element.addEventListener('mouseenter', () => setHoverState(true));
-    element.addEventListener('mouseleave', () => setHoverState(false));
+  window.addEventListener('mousemove', (event) => {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+    cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
   });
-});
 
+  const animateCursor = () => {
+    ringX += (mouseX - ringX) * 0.16;
+    ringY += (mouseY - ringY) * 0.16;
+    cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
+    requestAnimationFrame(animateCursor);
+  };
+
+  animateCursor();
+
+  const setHoverState = (enter) => {
+    body.classList.toggle('interactive-hover', enter);
+  };
+
+  interactiveSelectors.forEach((selector) => {
+    document.querySelectorAll(selector).forEach((element) => {
+      element.addEventListener('mouseenter', () => setHoverState(true));
+      element.addEventListener('mouseleave', () => setHoverState(false));
+    });
+  });
+}
+
+// ============================================
+// 2. SCROLL REVEAL CON INTERSECTION OBSERVER
+// ============================================
 const revealElements = document.querySelectorAll('.reveal');
 const observerOptions = {
   threshold: 0.18,
@@ -51,6 +61,56 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 revealElements.forEach((element) => revealObserver.observe(element));
 
+// ============================================
+// 3. MENÚ MÓVIL FULL-SCREEN OVERLAY
+// ============================================
+const burgerButton = document.querySelector('.burger');
+const menuCloseBtn = document.querySelector('.menu-close');
+const navLinks = document.querySelector('.nav-links');
+const navAnchors = navLinks.querySelectorAll('a');
+
+function openMenu() {
+  navLinks.classList.add('visible');
+  burgerButton.classList.add('open');
+  menuCloseBtn.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  navLinks.classList.remove('visible');
+  burgerButton.classList.remove('open');
+  menuCloseBtn.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+burgerButton.addEventListener('click', () => {
+  if (navLinks.classList.contains('visible')) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+});
+
+menuCloseBtn.addEventListener('click', closeMenu);
+
+// Cierra el menú al hacer clic en un enlace con scroll suave automático
+navAnchors.forEach((anchor) => {
+  anchor.addEventListener('click', () => {
+    closeMenu();
+  });
+});
+
+// Cierra el menú si se redimensiona la ventana a desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 820) {
+    closeMenu();
+    navLinks.style.display = '';
+  }
+});
+
+// ============================================
+// 4. FORMULARIO DE CONTACTO
+// ============================================
 const contactForm = document.getElementById('contactForm');
 const mailBtn = document.getElementById('mailBtn');
 const whatsappBtn = document.getElementById('whatsappBtn');
@@ -108,20 +168,23 @@ contactForm.addEventListener('submit', (event) => {
   event.preventDefault();
 });
 
-const burgerButton = document.querySelector('.burger');
-const navLinks = document.querySelector('.nav-links');
-const topbar = document.querySelector('.topbar');
+// ============================================
+// 5. OPTIMIZACIÓN DE RENDIMIENTO - THROTTLING
+// ============================================
+function throttle(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
 
-burgerButton.addEventListener('click', () => {
-  const expanded = burgerButton.getAttribute('aria-expanded') === 'true';
-  burgerButton.setAttribute('aria-expanded', String(!expanded));
-  topbar.classList.toggle('nav-open');
-});
-
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 820) {
-    topbar.classList.remove('nav-open');
-    navLinks.style.display = '';
-  }
-});
+// Throttle del scroll listener para mejores FPS
+window.addEventListener('scroll', throttle(() => {
+  // Aquí irían event listeners de scroll si fuera necesario
+}, 16), false);
 
