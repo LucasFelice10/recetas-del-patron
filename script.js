@@ -114,46 +114,48 @@ contactForm.addEventListener('submit', (event) => {
 });
 
 const burgerButton = document.querySelector('.burger');
-const navLinks = document.querySelector('.nav-links');
-const topbar = document.querySelector('.topbar');
+const mobileMenu = document.getElementById('mobile-menu');
+const closeMenuButton = document.getElementById('close-menu-btn');
+const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
 
-burgerButton.addEventListener('click', () => {
-  const expanded = burgerButton.getAttribute('aria-expanded') === 'true';
-  burgerButton.setAttribute('aria-expanded', String(!expanded));
-  topbar.classList.toggle('nav-open');
-});
-
-const closeMenuButton = document.querySelector('.close-menu');
-const menuLinks = document.querySelectorAll('.nav-links a');
-
-const closeMenu = () => {
-  burgerButton.setAttribute('aria-expanded', 'false');
-  topbar.classList.remove('nav-open');
+const openMobileMenu = () => {
+  mobileMenu.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  burgerButton.setAttribute('aria-expanded', 'true');
 };
 
-if (closeMenuButton) {
-  closeMenuButton.addEventListener('click', closeMenu);
+const closeMobileMenu = () => {
+  mobileMenu.classList.remove('active');
+  document.body.style.overflow = '';
+  burgerButton.setAttribute('aria-expanded', 'false');
+};
+
+if (burgerButton) {
+  burgerButton.addEventListener('click', openMobileMenu);
 }
 
-menuLinks.forEach(link => {
+if (closeMenuButton) {
+  closeMenuButton.addEventListener('click', closeMobileMenu);
+}
+
+mobileMenuLinks.forEach(link => {
   link.addEventListener('click', (e) => {
     const targetId = link.getAttribute('href');
     if (targetId && targetId.startsWith('#')) {
       e.preventDefault();
-      closeMenu();
+      closeMobileMenu();
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         targetElement.scrollIntoView({ behavior: 'smooth' });
       }
     } else {
-      closeMenu();
+      closeMobileMenu();
     }
   });
 });
 
 window.addEventListener('resize', () => {
   if (window.innerWidth > 820) {
-    topbar.classList.remove('nav-open');
-    navLinks.style.display = '';
+    closeMobileMenu();
   }
 });

@@ -838,58 +838,55 @@ body::before {
   .partner-track { animation: none; }
 }
 
-@media (max-width: 820px) {
-  .nav-links {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(10, 10, 10, 0.98);
-    backdrop-filter: blur(15px);
-    z-index: 999;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 0.3s ease-in-out;
-  }
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(15px);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
 
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
+.mobile-menu-overlay.active {
+  right: 0;
+}
 
-  .nav-links a {
-    font-size: 2.5rem;
-    color: #ffffff;
-    margin: 20px 0;
-    transition: color 0.3s ease;
-  }
+.mobile-menu-overlay a {
+  font-size: 2.5rem;
+  color: #ffffff;
+  text-decoration: none;
+  margin: 25px 0;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
 
-  .nav-links a:hover,
-  .nav-links a:focus,
-  .nav-links a:active {
-    color: var(--accent);
-  }
+.mobile-menu-overlay a:hover,
+.mobile-menu-overlay a:focus,
+.mobile-menu-overlay a:active {
+  color: var(--accent);
+}
 
-  .close-menu {
-    display: block;
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 2.5rem;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
+#close-menu-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
 
-  .close-menu:hover,
-  .close-menu:active {
-    color: var(--accent);
-  }
+#close-menu-btn:hover,
+#close-menu-btn:active {
+  color: var(--accent);
 }
 
 .reveal {
